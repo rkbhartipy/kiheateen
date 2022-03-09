@@ -1,0 +1,31 @@
+.banner-image{
+  background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url("https://assets-global.website-files.com/5e596dafce8eb6216f68e410/5e9f7e87600d3cdedd55f65e_fruit-salads-in-plate-1640774-p-1080.jpeg");
+  background-repeat:no-repeat;
+  background-size:cover;
+  height: 600px;
+}
+
+.tomato{
+  font-size:7vw;
+  font-style: italic;
+  font-weight: bolder;
+  color: white;
+  margin-top: 200px;
+  font-family: Segoe UI;
+}
+
+.KIHEA{
+  color: #8E0E00;
+}
+.Teen{
+  color: black;
+}
+
+.foody-dil-se{
+  font-size:20px;
+  color: white;
+}
+
+.search-input{
+  height: 50px;
+}

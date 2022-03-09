@@ -1,0 +1,91 @@
+<app-navbar2></app-navbar2>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div class="row justify-content-center">
+        <div class="col-sm-6 mt-4">
+          <div class="row justify-content-center">
+            <div class="col-sm-8 rounded profile-container-cls border border-dark mx-2 pb-3">
+                <div class="row">
+                  <div class="col-sm-12 mt-3">
+                    <p class="text-danger font-weight-bold"> <i>KIHEATeen</i> </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p class="h6 font-weight-bold">PAYMENT TYPE</p>
+                    <div class="form-check">
+                      <input class="form-check-input" [disabled]="!codpay" [checked]="codpay" required type="radio" name="paymentmode"
+                      id="cod" value="cod">
+                      <label class="form-check-label" for="">
+                        COD
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" [disabled]="codpay" [checked]="!codpay" required type="radio" name="paymentmode"
+                      id="op" value="onlinepayment"> 
+                      <label class="form-check-label" for="">
+                        Online payment
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-sm-12">
+                    <p class="h6 font-weight-bold">Other Details</p>
+                    <div class="row">
+                      <div class="col-sm-6">Order Id</div>
+                      <div class="col-sm-6">{{orderid}}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">Ordered Date and Time</div>
+                      <div class="col-sm-6">{{orderdate | date:'medium'}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-sm-12">
+                    <p class="h6 font-weight-bold">ORDER SUMMARY</p>
+                    <div class="row" *ngFor="let item of alldata; let i=index">
+                      <div class="col-sm-8"> <b>{{i+1}}.</b> {{item.foodname}}*{{item.quantityo}}</div>
+                      <div class="col-sm-2">{{item.price}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-4">
+                  <div class="col-sm-12">
+                    <p class="h6 font-weight-bold">Bill Details</p>
+                    <div class="row">
+                      <div class="col-sm-8">Item Total</div>
+                      <div class="col-sm-2">
+                        {{totalprice}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row mt-4">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-8">
+                        <div> <b>To Pay</b> </div>
+                      </div>
+                      <div class="col-sm-2">
+                        <div><b>{{totalprice}}</b></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-12 text-center">
+                    <button type="button" class="btn btn-danger">Download invoice</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

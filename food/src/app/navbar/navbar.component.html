@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" href="#">
+    <span class="KIHEA">KIHEA</span><span class="Teen">Teen</span>
+  </a>
+  <button class="navbar-toggler border border-white" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="text-white">=</span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <ng-template #isLogOut> 
+        <li class="nav-item">
+          <a class="nav-link text-white login" routerLink="/login">Log in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white signup" routerLink="/signup">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white signup"> <i class="fal fa-search"></i> </a>
+        </li>
+      </ng-template>
+      <li class="nav-item" *ngIf="isLoggedIn; else isLogOut">
+        <a class="nav-link text-white signup d-inline" routerLink="/profile">Profile</a>
+        <a class="nav-link text-white signup d-inline" routerLink="/cart">
+          <i class="far fa-shopping-cart"></i>
+          <sup class="border border-primary px-1 rounded-circle">{{totalnoofitems}}</sup>
+        </a>
+        <a href="" class="logout text-white d-inline" (click)="signout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>

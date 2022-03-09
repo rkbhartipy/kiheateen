@@ -1,0 +1,29 @@
+<app-navbar2></app-navbar2>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 mt-5">
+      <h3 class="text-left">SELECT PAYMENT MODE</h3>
+      <div class="row mt-4">
+        <div class="col-sm-6">
+          <form action="" #form="ngForm" (ngSubmit)="placeOrder(form)"> 
+            <div class="form-check">
+              <input class="form-check-input" required type="radio" name="paymentmode"
+              id="cod" value="cod" [(ngModel)]="COD" ngModel>
+              <label class="form-check-label" for="">
+                COD
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" required type="radio" name="paymentmode"
+              id="op" value="onlinepayment" [(ngModel)]="OP" ngModel> 
+              <label class="form-check-label" for="">
+                Online payment
+              </label>
+            </div>
+          <input type="submit" value="Checkout" [disabled]="!form.valid" class="mt-3 btn btn-danger">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

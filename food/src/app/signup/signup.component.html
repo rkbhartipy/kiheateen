@@ -1,0 +1,68 @@
+<app-navbar2></app-navbar2>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <div class="row mt-5">
+        <div class="col-sm-12">
+          <div *ngIf="loader==true" class="font-weight-bold text-center">Please wait</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <h3>Create account</h3>
+
+          <form action="" #signupform="ngForm" (ngSubmit)="checkCredential()">
+
+            <div class="form-group">
+              <label for="">Full name*</label>
+              <input type="text" name="fullname" placeholder="Full name" class="form-control" autofocus required #fname="ngModel" [(ngModel)]="fullname" ngModel>
+            </div>
+            <div *ngIf="fname.invalid && (fname.touched || signupform.submitted) ">
+              <div class="text-danger" *ngIf="fname.errors?.required">This field is required</div>
+            </div>
+
+            <div class="form-group">
+              <label for="">Username(email)*</label>
+              <input type="text" name="username" placeholder="Username" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #uname="ngModel" [(ngModel)]="username" ngModel>
+            </div>
+            <div *ngIf="uname.invalid && (uname.touched || signupform.submitted)">
+              <div class="text-danger" *ngIf="uname.errors?.required">This field is required</div>
+              <div class="text-danger" *ngIf="uname.errors?.pattern">Please enter a valid email address</div>
+            </div>
+
+            <div class="form-group">
+              <label for="">Password*</label>
+              <input type="password" name="password1" placeholder="Password" class="form-control" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" minlength="8" #pass1="ngModel" [(ngModel)]="password1" ngModel>
+            </div>
+            <div *ngIf="pass1.invalid && (pass1.touched || signupform.submitted)">
+              <div class="text-danger" *ngIf="(pass1.errors?.required) && (!pass1.errors?.minlength || !pass1.errors?.pattern)">This field is required</div>
+              <div class="text-danger" *ngIf="(pass1.errors?.pattern)">This is weak password (Please ensure it contains minimum eight characters, at least one letter, one number and one special character:)</div>
+            </div>
+
+
+            <div class="form-group">
+              <label for="">Confirm Password*</label>
+              <input type="password" name="password2" placeholder="Confirm Password" class="form-control" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" minlength="8" #pass2="ngModel" [(ngModel)]="password2" ngModel>
+            </div>
+            <div *ngIf="pass2.invalid && (pass2.touched || signupform.submitted)">
+              <div class="text-danger" *ngIf="(pass2.errors?.required) && (!pass2.errors?.minlength || !pass2.errors?.pattern)">
+                This field is required
+              </div>
+              <div class="text-danger" *ngIf="!(pass2.errors?.required)">
+                <div *ngIf="pass1.value!=pass2.value">
+                  Password should match
+                </div>
+              </div>
+            </div>
+          <input type="submit" value="Register" class="btn btn-primary" [disabled]="!signupform.valid || pass2.value!=pass1.value">
+          </form>
+
+          <hr color="black">
+            <div class="text-center"><span>Already have an account ? </span> 
+            <button class="btn btn-success" routerLink="/login">Login</button> </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+

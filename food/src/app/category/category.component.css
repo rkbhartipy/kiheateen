@@ -1,0 +1,28 @@
+.cat-title{
+  text-decoration: none;
+  font-family:inherit;
+  color:black;
+}
+
+.cat-title:hover{
+  color: black;
+  transition:ease-in;
+}
+
+.card-items{
+  border-radius:20px ;
+  border:1px solid black;
+  width: 200px;
+  transition: .2s;
+}
+
+.card-items:hover{
+  transform:scale(0.9);
+}
+
+.card-img-top{
+  border-top-left-radius:20px ;
+  border-top-right-radius:20px;
+  width:100%; 
+  height:200px
+}

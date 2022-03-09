@@ -1,0 +1,22 @@
+.navbar-brand{
+  font-weight: bolder;
+  font-style: italic;
+  font-size:1.5vw;
+  font-family: Segoe UI;
+
+}
+
+.login, .signup, .logout{
+  font-size: 20px;
+}
+
+.logout:hover{
+  text-decoration: none;
+}
+
+.KIHEA{
+  color: red;
+}
+.Teen{
+  color: black;
+}

@@ -1,0 +1,71 @@
+<app-navbar2></app-navbar2>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-6 mt-4">
+          <div class="row">
+            <div class="col-sm-8 rounded profile-container-cls border border-dark mx-2 pb-3">
+                <div class="row">
+                  <div class="col-sm-12 text-center mt-3">
+                    <span *ngIf="photourl== '' "><i class="fas fa-user-circle fa-10x"></i></span>
+                    <span *ngIf="photourl!= '' ">
+                      <img src="{{photourl}}" height="200px" width="200px" class="rounded rounded-circle thumbnail mt-3" alt="">
+                    </span>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-sm-12">
+                    <span  class="mr-3 font-weight-bold h4">{{fullname}}</span>
+                    <span  class="mr-3 font-weight-bold h4"></span>
+                    <span class="text-info" style="font-size:12px;">
+                      <span class="h5">
+                        {{stream | uppercase }} | {{year}} | {{semester}}
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="row mt-5">
+                  <div class="col-sm-12 text-center">
+                    <button type="button" class="btn btn-info btn-sm">About</button>
+                    <button type="button" class="btn btn-sm ml-5">History</button>
+                    <hr color="pink">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="">
+                      <span class="font-weight-bold">Phone: </span> 
+                      <span>+91-{{phoneno}}</span>
+                    </div>
+                    <div class="mt-2">
+                      <span class="font-weight-bold">Email: </span> 
+                      <span>{{username}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-sm-12">
+                    <button class="btn btn-success" routerLink="/update">Edit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="col-sm-6 mt-4">
+          <div class="row justify-content-end">
+            <div class="col-sm-8 mt-4 mx-2">
+              <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button routerLink="/myorders" routerLinkActive="active" class="btn
+                  btn-primary" [disabled]="!myordersexitsornot">My orders</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
