@@ -39,8 +39,6 @@ export class VegComponent implements OnInit {
       record['foodprice']=data.foodprice
       // initially total price of one product is equal to foodprice
       record['totalprice']=data.foodprice
-
-      console.log("the record is :", record)
       this.apiService.addToCart(record).subscribe((data:any) =>{
         if (data){
           if (data=="itemexits"){
@@ -55,12 +53,10 @@ export class VegComponent implements OnInit {
       alert("Please login first")
     }
   }
-
   reloadCurrentRoute(){
     let currentUrl=this.router.url
     this.router.navigateByUrl('/', {skipLocationChange:true}).then(() => {
       this.router.navigate([currentUrl])
     })
   }
-  
 }

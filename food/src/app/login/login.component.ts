@@ -35,13 +35,11 @@ export class LoginComponent implements OnInit {
     
   }
 
-
   // google and facebook authentication
   googleLogin(){
     this.socialAService.signIn(GoogleLoginProvider.PROVIDER_ID)
     this.socialAService.authState.subscribe((data:any)=>{
       if(data){
-        console.log("google data is :",data)
         this.postData(data);
       }
     })
@@ -56,25 +54,20 @@ export class LoginComponent implements OnInit {
         "verified_user": "True",
         "photourl": data.photoUrl
       }
-    console.log("post function")
     this.apiService.googleLogin(record).subscribe((data:any)=>{
 
     if (data["msg"]=="1"){
-    console.log("data already exits and make user login")
     localStorage.setItem("currentUserId", data["id"])
     }
     if (data["msg"]=="2"){
-    console.log("data does not exits make user login in")
     localStorage.setItem("currentUserId", data["id"])
     }
     })
-
     this.authService.userData=data
     this.authService.googleAuth()
   }
 
   facebookLogin(){
-
   }
 
   // django based auth
@@ -89,7 +82,6 @@ export class LoginComponent implements OnInit {
       if(this.allStudents[i].username==this.userName){
         this.singleuser=this.allStudents[i]
         this.userexits=true;
-        console.log("user data is :", this.singleuser)
         break;
       }
     }
@@ -116,9 +108,6 @@ export class LoginComponent implements OnInit {
         }
       }
     }
-
-
-
   }
 
   reloadCurrentRoute() {
@@ -127,39 +116,4 @@ export class LoginComponent implements OnInit {
       this.router.navigate([currentUrl]);
     });
   }
-
-
-  // fetchData(){
-  //   for(let i=0; i<this.allStudents.length; i++) {
-  //     let id=this.allStudents[i].id
-  //     let fname=this.allStudents[i].fullname
-  //     let uname=this.allStudents[i].username
-  //     let pass1=this.allStudents[i].password1
-  //     let pass2=this.allStudents[i].password2
-  //     let u_verify=this.allStudents[i].verified_user
-  //     if(uname==this.userName && pass1==this.password && (this.userName!=="" || this.password=="")){
-  //       this.logged_in_successfully_or_not=true
-  //       if(u_verify==true){
-  //         this.verified_user=true
-          // localStorage.setItem("isUserLoggedIn","true")
-          // localStorage.setItem("currentUserId",id)
-          // this.router.navigate(['/profile'])
-          // break;
-  //       }
-  //     } 
-  //   }
-  //   console.log("one ",this.logged_in_successfully_or_not)
-  //   console.log("two ",this.verified_user)
-  //   if(this.logged_in_successfully_or_not!=true && this.verified_user!=true){
-  //     console.log("-----------")
-  //     alert("User does not exits with this email")
-  //   }
-  //   else if(this.verified_user==false && this.logged_in_successfully_or_not==true){
-  //     alert("User is not verified please check your email to verify your account")
-  //   }
-  //   else if(uname){
-  //     console.log("-----------2")
-  //     alert("Username or password is incorrect")
-  //   }
-  // }
 }

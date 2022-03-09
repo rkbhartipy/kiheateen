@@ -19,10 +19,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fun(){
-    $("")
-  }
-
   searchData(form:any){
     let searchkey=(form.value.searchfield).toLowerCase();
 
@@ -41,8 +37,6 @@ export class HomeComponent implements OnInit {
     else if(searchkey=="cold-drink" || searchkey=="colddrink" || searchkey=="drink" || searchkey=="drinks" || searchkey=="colddrinks" || searchkey=="cold drink" || searchkey=="drinks" || searchkey=="cold drinks"){
       this.router.navigate(['/colddrink'])
     }
-
-
 
     else if(searchkey=="food"){
       this.router.navigate(['/home'])

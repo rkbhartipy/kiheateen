@@ -17,12 +17,10 @@ export class AccVerifiedComponent implements OnInit {
               public route: ActivatedRoute, 
               public localData:LocalDataStoreService,
               public apiService: ApiService) { }
-
   ngOnInit(): void {
     this.loader=true;
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.token=param.get("token")
-
       this.apiService.signupTokenVerification(this.token).subscribe((data:any)=>{
         if (data){
           if(data=="1"){

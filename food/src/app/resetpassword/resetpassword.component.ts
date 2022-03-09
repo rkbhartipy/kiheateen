@@ -9,26 +9,20 @@ import { Router } from '@angular/router';
 })
 export class ResetpasswordComponent implements OnInit {
 
-  message:string="";
   loader=false;
-
   constructor(public apiService: ApiService,
               public router: Router) { }
-
   ngOnInit(): void {
   }
 
   resetpassword(resetform:any){
     let email=resetform.value.email
-    console.log(email)
     if(email!==null || email!==""){
       this.loader=true
       let record={'email':email}
-      console.log("the record is :", record)
       this.apiService.resetPasswordMail(record).subscribe((data:any)=>{
         if(data=="1"){
           this.loader=false
-          console.log("got the data :", data)
           alert("Email is already sent")
         }
         else if(data=="2"){

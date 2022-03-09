@@ -48,7 +48,6 @@ export class ApiService {
 
   // get from cart 
   getFromCart(CUserId:any): Observable<ICartItems[]>{
-    console.log("from api service page")
     return this.http.get<ICartItems[]>(`${this.URL}/getfromcart/${CUserId}/`)
   }
 
@@ -58,7 +57,6 @@ export class ApiService {
   }
 
   removeAllItems(fuserid:any){
-    console.log("from api service page removallitems id is :")
     return this.http.delete<ICartItems[]>(`${this.URL}/cartoperation/${fuserid}/`)
   }
 
@@ -123,6 +121,10 @@ export class ApiService {
   
   saveAndDeleteCartItems(id:any):any{
     return this.http.get(`${this.URL}/checkorderedlist/${id}`)
+  }
+
+  reviewandsuggestion(data:any){
+    return this.http.post(`${this.URL}/review/`, data)
   }
 
 }

@@ -1,5 +1,6 @@
+from attr import field
 from rest_framework import fields, serializers
-from .models import CustomerModel, FoodModel, CartModel, OrderPlaced
+from .models import CustomerModel, FoodModel, CartModel, OrderPlaced, ReviewAndSuggestion
 
 
 class StudentSerializer(serializers.ModelSerializer):
@@ -21,4 +22,10 @@ class CartSerializer(serializers.ModelSerializer):
 class OrderPlacedSerializer(serializers.ModelSerializer):
   class Meta:
     model = OrderPlaced
-    fields=['id', 'userido', 'foodido', 'foodname', 'quantityo', "price", 'cod', 'onlinept', 'paymentdone', 'orderid', 'orderdate', 'status']
+    fields=['id', 'userido', 'foodido', 'foodname', 'quantityo', "price", 'cod', 'onlinept', 'paymentdone', 'orderid', 'orderdate', 'order_status']
+
+class ReviewAndSuggestion(serializers.ModelSerializer):
+  class Meta:
+    model = ReviewAndSuggestion
+    fields = ['id', 'name', 'review']
+

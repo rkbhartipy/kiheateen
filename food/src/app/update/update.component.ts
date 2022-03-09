@@ -35,7 +35,6 @@ export class UpdateComponent implements OnInit {
         this.stream=data.stream;
         this.year=data.year;
         this.semester=data.semester;
-
         this.passWord1=data.password1 
         this.passWord2=data.password2 
         this.phoneno=data.phoneno;
@@ -51,7 +50,6 @@ export class UpdateComponent implements OnInit {
       "year":this.year,
       "semester":this.semester,
     };
-    console.log("user id is:", this.cUserId);
     this.apiService.updateStudent(this.cUserId, record).subscribe((data:any) => {
       if (data){
         alert("Data update successfully")

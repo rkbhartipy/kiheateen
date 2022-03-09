@@ -22,13 +22,11 @@ export class PlacedorderComponent implements OnInit {
   constructor(public apiService: ApiService, 
               public router: Router,
               public rzpayservice: RzpayService) { }
-
   ngOnInit(): void {
   }
     
 
   placeOrder(form:any){
-    console.log("payment type is :", this.COD)
     if(this.COD=="cod"){
       this.CODP()
     }
@@ -47,7 +45,6 @@ export class PlacedorderComponent implements OnInit {
   }
 
   callfun():any{
-    console.log("----------------------------------------:")
     return "hello";
   }
 
@@ -78,7 +75,7 @@ export class PlacedorderComponent implements OnInit {
             window.location.replace('http://localhost:4200/myorders');
           })
           .catch(error => {
-              console.log(error)
+              
           });
     },
 
@@ -114,5 +111,4 @@ export class PlacedorderComponent implements OnInit {
       }
     })
   } 
-
 }

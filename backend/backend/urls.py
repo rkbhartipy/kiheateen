@@ -18,10 +18,8 @@ from django.urls import path
 from api import views
 from django.contrib.auth import views as auth_view
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", views.home),
     path('user/', views.studentApiReadCreate.as_view()),
     path('user/<int:pk>/', views.studentApiUpdateDelete.as_view()),
     # show food on diffrent page acc to category
@@ -43,11 +41,9 @@ urlpatterns = [
     path('codpaymentmode/', views.OrderPlacedFun, name="codpayment"),
     path('getorderdetails/<int:id>/', views.GetOrderDetails),
     path('checkorderedlist/<int:id>/', views.CheckOrderedItemsForUser), 
-
     # pay with razorpay
     path('razorpayment/<int:id>/<slug:status>/', views.RazorOrrderPlaced),
-
-
     # save payment details after pay
     path('razorpayment/<int:id>/<slug:status>/<slug:orderid>/', views.RazorOrrderPlaced),
+    path("review/", views.Review, name="review"),
 ]

@@ -17,9 +17,7 @@ export class ColddrinkComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private authService: AuthService, 
-    private router: Router) { 
-    }
-
+    private router: Router) {}
   ngOnInit(): void {
     this.apiService.getFood("colddrink").subscribe((data)=>{
       this.vegFood=data;
@@ -31,11 +29,9 @@ export class ColddrinkComponent implements OnInit {
       }
     })
   }
-
   addtoCart(data:any){
     if(localStorage.getItem("isUserLoggedIn")=="true"){
       // this.cartService.addToCart(data)
-
       let record : any ={}
       record['userid']=localStorage.getItem("currentUserId")
       record['foodid']=data.id
@@ -45,24 +41,20 @@ export class ColddrinkComponent implements OnInit {
       record['foodprice']=data.foodprice
       // initially total price of one product is equal to foodprice
       record['totalprice']=data.foodprice
-
       this.apiService.addToCart(record).subscribe((data:any) =>{
         if (data){
           console.log("data added successfully")
           if (data=="itemexits"){
-            console.log("type is string")
             alert("Item already exists") 
           }  
           this.reloadCurrentRoute()
         }
       })
-
     }
     else{
       alert("Please login first")
     }
   }
-
   reloadCurrentRoute(){
     let currentUrl=this.router.url
     this.router.navigateByUrl('/', {skipLocationChange:true}).then(() => {

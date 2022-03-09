@@ -48,9 +48,7 @@ export class ChocolateComponent implements OnInit {
 
       this.apiService.addToCart(record).subscribe((data:any) =>{
         if (data){
-          console.log("data added successfully")
           if (data=="itemexits"){
-            console.log("type is string")
             alert("Item already exists") 
           }  
           this.reloadCurrentRoute()

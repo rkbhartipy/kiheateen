@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerModel, FoodModel, CartModel, PassResetModel, SignupMailVerificationModel, OrderPlaced
+from .models import CustomerModel, FoodModel, CartModel, PassResetModel, SignupMailVerificationModel, OrderPlaced, ReviewAndSuggestion
 
 # Register your models here.
 
@@ -25,7 +25,15 @@ class SignupMailVerificationAdmin(admin.ModelAdmin):
 
 @admin.register(OrderPlaced)
 class OrderPlacedAdmin(admin.ModelAdmin):
-  list_display=['id', 'userido', 'foodido', 'foodname', 'quantityo', 'price', 'cod', 'onlinept', 'paymentdone', 'orderid', 'orderdate', 'status']
+  list_display=['id', 'userido', 'foodido', 'foodname', 'quantityo', 'price', 'cod', 'onlinept', 'paymentdone', 'orderid', 'orderdate', 'order_status']
+
+@admin.register(ReviewAndSuggestion)
+class ReviewAndSuggestionAdmin(admin.ModelAdmin):
+  list_display=['id', 'name', 'review']
+
+
+
+
 
 
 

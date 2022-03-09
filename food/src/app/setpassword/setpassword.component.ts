@@ -21,7 +21,6 @@ export class SetpasswordComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((param:ParamMap)=>{
       this.token=param.get('token')
-      console.log(this.token)
     })
 
     this.apiService.checkLinkExpiration(this.token).subscribe((data:any)=>{
@@ -38,7 +37,6 @@ export class SetpasswordComponent implements OnInit {
             "password1":form.value.password1,
             "password2":form.value.password2 
           }
-    console.log(record)
     this.apiService.setPass(record).subscribe((data:any)=>{
       if(data=="1"){
         alert("Password was reset successfully now you can login")
@@ -47,8 +45,6 @@ export class SetpasswordComponent implements OnInit {
       else if(data=="2"){
         alert("This password reset link is expired try initiate the process again")
       }
-    })
-    
+    }) 
   }
-
 }

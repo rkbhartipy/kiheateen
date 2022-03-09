@@ -67,8 +67,6 @@ export class SignupComponent implements OnInit {
   // signup step 2 (store the signup data)
   signUp(){
     if(this.fullname!="" && this.username!="" && this.password1!="" && this.password2!="" && (this.password1==this.password2) ){
-      
-      console.log("record created")
       let record={
         "fullname":this.fullname,
         "username":this.username,
@@ -86,7 +84,6 @@ export class SignupComponent implements OnInit {
 
     }
     else{
-      console.log("all fields are required")
     }
   }
 

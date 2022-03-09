@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+      <div class="row mt-5">
+        <div class="col-sm-6">
+          <h3>REVIEW AND SUGGESTION</h3>
+          <form action="" #reviewform="ngForm" (ngSubmit)="reviewformdata(reviewform)">
+            <div class="form-group">
+              <label for="">Name*</label>
+              <input type="text" name="name" placeholder="Name" class="form-control" required #uname="ngModel" ngModel>
+            </div>
+            <div *ngIf="uname.invalid && (uname.touched || reviewform.submitted)">
+              <div class="text-danger" *ngIf="uname.errors?.required">This field is required</div>
+            </div>
+            <div class="form-group">
+              <label for=""> Feedback</label>
+              <textarea class="form-control" required name="comment"
+              placeholder="Your review, comment or suggestions"
+              rows="3" #cmt="ngModel" ngModel></textarea>
+            </div>
+            <div class="text-danger" *ngIf="cmt.invalid && (cmt.touched || reviewform.submitted)">
+              <div class="text-danger" *ngIf="cmt.errors?.required">This field is required</div>
+            </div>
+            <p> <b>NOTE: Your identity would not be revealed, feel free to
+            review our service</b> </p>
+            <input type="submit" value="Submit" class="btn btn-danger border border-info" [disabled]="!reviewform.valid">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

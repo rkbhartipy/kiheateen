@@ -39,6 +39,7 @@ import { MyordersComponent } from './myorders/myorders.component';
 import { ChocolateComponent } from './chocolate/chocolate.component';
 import { ColddrinkComponent } from './colddrink/colddrink.component';
 import { FooterComponent } from './footer/footer.component';
+import { ReviewAndSuggestionComponent } from './review-and-suggestion/review-and-suggestion.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { FooterComponent } from './footer/footer.component';
     ChocolateComponent,
     ColddrinkComponent,
     FooterComponent,
+    ReviewAndSuggestionComponent,
   ],
   imports: [
     BrowserModule,

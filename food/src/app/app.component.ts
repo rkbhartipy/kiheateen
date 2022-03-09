@@ -12,8 +12,6 @@ export class AppComponent {
   constructor(public apiService: ApiService){
     this.apiService.getAllStudent().subscribe((data)=>{
       this.val=data
-      console.log(data)
     })
-    console.log("fetched data from db in app com", this.val)
   }
 }

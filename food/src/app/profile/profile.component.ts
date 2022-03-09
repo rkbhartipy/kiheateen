@@ -32,12 +32,9 @@ export class ProfileComponent implements OnInit {
       this.username=data.username;
       this.photourl=data.photourl;
       this.phoneno=data.phoneno;
-
       this.stream=data.stream;
       this.year=data.year;
       this.semester=data.semester;
-      
-      console.log("photourl", this.photourl)
     })
 
     this.apiService.checkOrderedList(this.cUserId).subscribe((data:any)=>{
@@ -45,7 +42,5 @@ export class ProfileComponent implements OnInit {
         this.myordersexitsornot=true
       }
     })
-
   }
-
 }

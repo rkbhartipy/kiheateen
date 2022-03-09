@@ -19,8 +19,8 @@ export class ChangepasswordComponent implements OnInit {
     let record={"userid":localStorage.getItem("currentUserId"),
                 "oldpass":passchngform.value.oldpassword,
                 "password1":passchngform.value.new_password1,
-                "password2":passchngform.value.new_password2}
-    console.log("record", record)
+                "password2":passchngform.value.new_password2
+              }
     this.apiService.passChng(record).subscribe((data:any)=>{
       if(data){
         if(data=="1"){
@@ -35,7 +35,5 @@ export class ChangepasswordComponent implements OnInit {
         }
       }
     })
-
   }
-
 }

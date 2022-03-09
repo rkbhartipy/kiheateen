@@ -1,9 +1,8 @@
 from datetime import datetime
+from unicodedata import name
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.contrib.auth.models import _
-from django import forms
-from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -24,11 +23,6 @@ class CustomerModel(models.Model):
 
   def __str__(self):
     return str(self.id)
-
-# class Orders(models.Model):
-#   userid=models.ForeignKey(CustomerModel, on_delete=models.CASCADE)
-#   status=models.CharField(max_length=)
-#   received
 
 # display food
 class FoodModel(models.Model):
@@ -53,10 +47,6 @@ class CartModel(models.Model):
 
   def __str__(self):
     return str(self.userid)
-
-  def __str__(self):
-    return str(self.foodid)
-
 
 # cart and checkout
 class PassResetModel(models.Model):
@@ -95,9 +85,11 @@ class OrderPlaced(models.Model):
   paymentdone=models.BooleanField(default=False)
   orderid=models.CharField(max_length=200, default="")
   orderdate=models.DateTimeField(auto_now_add=True)
-  status=models.CharField(max_length=20, choices=STATUS_CHOICES, default="ordered")
+  order_status=models.CharField(max_length=20, choices=STATUS_CHOICES, default="ordered")
 
-
+class ReviewAndSuggestion(models.Model):
+  name=models.CharField(max_length=100)
+  review=models.CharField(max_length=300)
 
 
 
