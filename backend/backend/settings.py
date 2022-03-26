@@ -21,13 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'django-insecure-dc(l42_4jjr!$=7n21@xy%_$9y!jk&uco(#!cpbi*(szw4pj#i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["http://kiheateen.heroku.com", "*"]
 
 # Application definition
 
@@ -129,21 +128,23 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS="*"
-
 CORS_ALLOWED_ORIGINS=[
-    "http://localhost:4200"
+    "http://localhost:4200",
+
+    "https://kiheateen.web.app",
+
+    "http://kiheateen.herokuapp.com",
 ]
 
 EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_PORT=587
-EMAIL_HOST_USER=""
-EMAIL_HOST_PASSWORD=""
+EMAIL_HOST_USER="rohit123py@gmail.com"
+EMAIL_HOST_PASSWORD="rohit@123"
 EMAIL_USE_TLS=True
 
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
-RAOZRPAY_API_KEY=""
-RAZORPAY_API_SECRET_KEY=""
+RAOZRPAY_API_KEY="rzp_test_mTTT4IIZCjbpsn"
+RAZORPAY_API_SECRET_KEY="nQxRTeVT7vKCEOsDaPkkAn34"

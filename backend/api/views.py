@@ -46,7 +46,7 @@ def SendVerificationMail(request, email):
   id=user_obj.id
   obj=SignupMailVerificationModel.objects.create(userid=user_obj, email=email, token=u_token)
   subject="Email verification"
-  message= f'Click on given link to verify your email http://localhost:4200/acc-verified/{u_token}'
+  message= f'Click on given link to verify your email http://localhost:4200/acc-verified/{u_token} after verification is done this link will be expired'
   recipient_list=[email]
   from_email=settings.EMAIL_HOST_USER
   send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list)
@@ -265,8 +265,6 @@ def OrderPlacedFun(request):
 
     S = 10  # number of characters in the string.    
     ran = ''.join(random.choices(string.ascii_uppercase + string.digits, k = S)) 
-    print("ran :", ran)
-
     for i in range(0,len(objs)):
       OrderPlaced.objects.create(userido=objs[i].userid, foodido=objs[i].foodid, foodname=objs[i].foodname , quantityo=objs[i].quantity, price=objs[i].totalprice, cod=True, onlinept=False, orderid=str(ran))
       de=CartModel.objects.filter(userid=objs[i].userid, foodid=objs[i].foodid)
@@ -279,12 +277,9 @@ def OrderPlacedFun(request):
 client = razorpay.Client(auth=(RAOZRPAY_API_KEY, RAZORPAY_API_SECRET_KEY))
 @api_view(['GET','POST'])
 def RazorOrrderPlaced(self, id, status=None, orderid=None):
-  print("--function is called--")
   # calculate total amount and assign to order_amount
   if status=="PAY":
-    print("1")
     try:
-      print("2")
       userdetails=CustomerModel.objects.get(id=id)
       obj1=CartModel.objects.filter(userid=id)
       order_amount=0
@@ -298,19 +293,16 @@ def RazorOrrderPlaced(self, id, status=None, orderid=None):
       return JsonResponse(context, safe=False)
 
     except Exception as e:
-      print("3")
       return JsonResponse("0", safe=False)
 
   if status=="save" and orderid!=None:
     objs=CartModel.objects.filter(userid=id)
     for i in range(0,len(objs)):
-      print("6")
       OrderPlaced.objects.create(userido=objs[i].userid, foodido=objs[i].foodid, foodname=objs[i].foodname , quantityo=objs[i].quantity, price=objs[i].totalprice, cod=False, onlinept=True, orderid=str(orderid))
       de=CartModel.objects.filter(userid=objs[i].userid, foodid=objs[i].foodid)
       de.delete()
     return JsonResponse("11111111", safe=False)
   else:
-    print("4")
     return JsonResponse("0", safe=False) 
 
 # get order details for particular user 
@@ -347,10 +339,10 @@ def Review(request):
       data=request.data
       ReviewAndSuggestion.objects.create(name=data["name"], review=data["review"],)
     except Exception as e:
-      print(e)
+      pass
     return JsonResponse("1", safe=False)
   else:
-    print("Invalid request")
+    return JsonResponse("0", safe=False)
   
 
 
